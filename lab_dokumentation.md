@@ -11,20 +11,40 @@ nätverks-, behörighets- och CLI-övningar.
 
 ## GIT/github
 
+installera GitHub CLI i Powershell
+```
+winget install --id github.cli
+```
 
-skapar konto på github.com
-git laddas ner från den officiella hemsidan git-scm.com och installerades i windows
-installationen verifieras med git-version, sedan lägger jag till min mail som används till mitt githubkonto och mitt fullständiga namn och efternamn, får en key som jag klistrar in på github under inställningar-ssh keys. fungerar inte den, sök i dola mappar på datorn efter .ssh och leta efter id_ed25519.pub-högerklicka-välj öppna med anteckningar, kopiera den nyckeln och klistra in.
+
+GitHub konto förklaras genom länken:
+https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github 
+
+alt. direktlänk till github och sätt upp konto där:
+https://github.com/signup
+
+Git laddas ner från den officiella sidan:
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+Skapa konto på github.
+Installera i windows 
+installationen verifieras med git-version, sedan läggs det till mail och den måste vara samma som när det registreras githubkonto samt fullständigt namn och efternamn
+ Du får en key som klistras in på github under inställningar-ssh keys. Fungerar inte den, sök i dolda mappar på datorn efter .ssh och leta efter id_ed25519.pub-högerklicka-välj öppna med anteckningar, kopiera den nyckeln och klistra in i anteckningar, då har du nyckel och kan använda den.
+
+i git terimnalen:
 ```
 git --version
 git config --global user.name "skriv ditt namn inom parentesen"
 git --config global user.email "skriv din mail här"
-ssh-keygen -t ed25519 -C "eposten som är kopplat till github"
+ssh-keygen -t ed25519 -C "e-posten som är kopplat till github"
 ```
 
 ## Labbmiljö & Nätverk
 
 Här beskriver jag hur de två virtuella maskinerna sattes upp
+
+lokal installation av git på windows11 samt Ubuntu version26.04 på:
+https://git-scm.com/install/windows
  
 
 ```
@@ -62,14 +82,14 @@ Kort beskrivning av:
 ### Linux
 
 #### Skapa mapp och fil
-skapar loggkatalog för mappen. -p flaggan skapar även överliggande mappar om de saknas. katalogen skapades till slut utan felmeddelande.
+Skapar loggkatalog för mappen. -p flaggan skapar även överliggande mappar om de saknas. 
 ```bash
 kommando sudo mkdir -p /var/systementor/konsultdata
 sudo touch /var/systementor/konsultdata/anteckningar.txt
 ls -l /var/systementor/konsultdata
 ```
 #### Skapa grupp och rättigheter
-skapar grupp och regler för skriv/läsrättigheter. -m skapar hemkatalog och -g sätter användarens primära grupp. till sist kontrollerar man rättigheter med ls -l. -la skriver ut hela mappen med alla filer uppradade för lättare översikt över rättigheter.
+Skapar grupp och regler för skriv/läsrättigheter. -m skapar hemkatalog och -g sätter användarens primära grupp. Till sist kontrollerar man rättigheter med ls -l. -la skriver ut hela mappen med alla filer uppradade för lättare översikt över rättigheter.
 ```bash
 sudo groupadd konsulter
 sudo useradd -m -g konsulter konsultanv
@@ -84,13 +104,14 @@ sudo ls -la /var/systementor/konsultdata
 ```
 
 ### Windows 
-i windows använder jag powershell för att skriva in kommandon, och det behöver göras med administratör-rättigheter. set-location flyttar mig till mappen, get-childitem skriver jag för att verifiera att mappen systementor listar konsultdata. listar acl-regler med get-acl, resultatet visar vilka användare och grupper som har åtkomst samt vilka rättigheter de har.flera av behörigheterna är ärvda från den överordnade mappen.
+I windows använder jag powershell för att skriva in kommandon, och det behöver göras med administratör-rättigheter. set-location flyttar mig till mappen, get-childitem skriver jag för att verifiera att mappen systementor listar konsultdata. Listar acl-regler med get-acl, resultatet visar vilka användare och grupper som har åtkomst samt vilka rättigheter de har. Flera av behörigheterna är ärvda från den överordnade mappen.
 ```Powershell
 set-location c:\systementor
 new-item -itemtype directory -path c:\systementor\konsultdata -force
 get-childitem c:\systementor
 (get-acl .\konsultdata).access
 ```
+
 
 
 
