@@ -148,23 +148,31 @@ new-item -itemtype directory -path c:\systementor\konsultdata -force
 get-childitem c:\systementor
 (get-acl .\konsultdata).access
 ```
+![acl behörigheter i windows](./images/aclwindows.png)
 verifierar nätverksinställningarna med ipconfig 
  testade anslutningen med ping 192.168.44.20 och får svar ttl
 
  
 ## AI LOGG OCH KRITISK UTVÄRDERING
 
-jag gav Chatgpt en prompt :
-jag gjorde såhär först sudo group, add konsulter, och sen så sudo user add -m -g konsulter:konslutanv, vad står -m och -g för?
-svar från Chatgpt:
--m skapar en hemkatalog för användaren och -g sätter användarens primära grupp, i ditt fall "konsulter" så komandot betyder: skapa användaren konslutanv, skapa dess hemkatalog och sätt primär grupp till konsulter.
-verifierades: genom att gå till mappen och se ordningen på strukturen
+*ska tilläggas att jag pratar med chatgpt därav språket.*
+### jag gav Chatgpt en prompt : 
+ 
+ ### prompt 1:
+ jag gjorde såhär först sudo group, add konsulter, och sen så sudo user add -m -g konsulter:konslutanv, vad står -m och -g för?
+ svar från Chatgpt:
+ -m skapar en hemkatalog för användaren och -g sätter användarens primära grupp, i ditt fall "konsulter" så komandot betyder: skapa användaren konslutanv, skapa dess hemkatalog och sätt primär grupp till konsulter.
+ 
+ verifierades: genom att gå till mappen och se ordningen på strukturen
 
-Prompt 2 : 
-vad gör kolonet i konslutanv:konsluter?
-svar från chatgpt:
-kolonet i chown-kommandot skiljer på ägare och grupp, det som står före kolnet är ägaren. och det som står efter är grupp.
-verifierades: med att först försöka ändra på rättigheter-chmod, som rwx, vilket inte gick, så jag fick ändra från mig till konsulter och sedan kunde genom ls -l lista vilka rättigheter som var, och se ägare anv och andra, samt ändra för andra vilka rättigheter de fick för att verifiera att det verkligen var så genom att skriva o+r. och sedan ls -l
+### Prompt 2 : 
+
+ vad gör kolonet i konslutanv:konsluter?
+ 
+ svar från chatgpt:
+ kolonet i chown-kommandot skiljer på ägare och grupp, det som står före kolnet är ägaren. och det som står efter är grupp.
+  
+  verifierades: med att först försöka ändra på rättigheter-chmod, som rwx, vilket inte gick, så jag fick ändra från mig till konsulter och sedan kunde genom ls -l lista vilka rättigheter som var, och se ägare anv och andra, samt ändra för andra vilka rättigheter de fick för att verifiera att det verkligen var så genom att skriva o+r. och sedan ls -l
 
 
 
