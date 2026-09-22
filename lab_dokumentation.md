@@ -11,11 +11,6 @@ nätverks-, behörighets- och CLI-övningar.
 
 ## GIT/github
 
-installera GitHub CLI i Powershell
-```
-winget install --id github.cli
-```
-
 
 GitHub konto förklaras genom länken:
 https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github 
@@ -27,9 +22,11 @@ Git laddas ner från den officiella sidan:
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 Skapa konto på github.
-Installera i windows 
-installationen verifieras med git-version, sedan läggs det till mail och den måste vara samma som när det registreras githubkonto samt fullständigt namn och efternamn
- Du får en key som klistras in på github under inställningar-ssh keys. Fungerar inte den, sök i dolda mappar på datorn efter .ssh och leta efter id_ed25519.pub-högerklicka-välj öppna med anteckningar, kopiera den nyckeln och klistra in i anteckningar, då har du nyckel och kan använda den.
+Installera git i windows 
+installationen verifieras med git-version 
+lägg det till mail och den måste vara samma som det konto som registreras på GitHub
+fullständigt namn och efternamn
+ Du får en key som klistras in på github under inställningar-ssh keys. Fungerar inte den, sök i dolda mappar på datorn efter .ssh och leta efter id_ed25519.pub-högerklicka-välj öppna med anteckningar, kopiera den nyckeln och klistra in i rutan där i ssh key.
 
 i git terimnalen:
 ```
@@ -39,11 +36,46 @@ git --config global user.email "skriv din mail här"
 ssh-keygen -t ed25519 -C "e-posten som är kopplat till github"
 ```
 
+## skapa ett repository på GitHub
+ 
+logga in på GitHub:
+välj new för att skapa ett nytt repository
+fyll i följande:
+repository name: linuxwidowslab
+description: lab_dokumentation
+Visibility: public eller private
+klicka på : add repository
+
+på datorn lokalt: 
+skapa en tom mapp som heter samma som på github linuxwindowslab
+öppna vs code 
+välj file- open folder och välj mappen på datorn
+i vs code lägg till lab_dokumentation.md new file i foldern som du öppnat.
+du gör samma om du vill ha en mapp med bilder väl new file döp den till images.
+
+hur du kopplar din lokala mapp till Github för första gången: öppna terminalen i vs code:
+```
+git init
+git status
+git add 
+git commit -m "här skriver du en komentar om dina tilläg eller ändringar"
+git remote add origin
+git push
+```
+Vid fortsatta ändringar skriv först ctrl+s för att spara lokalt på datorn. Sedan öppnar du terminalen i vs code och skriver:
+```
+git status 
+git add 
+git commit -m "spegla din arbetsprocess"
+git push
+```
+
+
 ## Labbmiljö & Nätverk
 
 Här beskriver jag hur de två virtuella maskinerna sattes upp
 
-lokal installation av git på windows11 samt Ubuntu version26.04 på:
+installation av datorer i VMware på windows11 samt Ubuntu version26.04 på:
 https://git-scm.com/install/windows
  
 
