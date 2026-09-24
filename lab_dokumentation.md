@@ -203,10 +203,7 @@ Genom att ställa frågan på flera olika sätt, och att kanske helt enkelt anv�
 Genom att lära sig prompter kan man få fram mer träffsäkra svar.
 
 
-
-
-
-
+![skärmdump git](./images/skärmdumpgit.png)
 
 
 
