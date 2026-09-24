@@ -10,7 +10,7 @@ denna repository innehåller dokumentation för en installation av Linux, Window
 
 ## Dokumentation 
 
-[Läs labbdokumentationen här](labb_dokumentation.md)
+[Läs labbdokumentationen här](lab_dokumentation.md)
 
 
 ![framsida](./images/frontpagelab.png)
